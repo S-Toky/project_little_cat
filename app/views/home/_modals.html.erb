@@ -1,0 +1,89 @@
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalSgnUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">S'inscrire</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signin mt-3"}) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"exemple@exemple.com",required: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Mot_de_passe %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"Mot de passe",required: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder:"Veillez confirmer",required: true %>
+            </div><br/>
+
+            <div class="actions">
+              <%= f.submit "Sign up", class:"btn btn-lg btn-primary btn-block" %>
+            </div>
+          <% end %>
+      </div>
+      <div class="modal-footer">
+       <marquee direction="right"><%= image_tag ("chatcour.gif")%> </marquee>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Se connecter</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control",placeholder:"Email",required: true %>
+            </div>
+
+            <div class="field">
+              <%= f.label :Mot_de_passe %><br />
+              <%= f.password_field :password, autocomplete: "current-password",class:"form-control",placeholder:"Mot de passe",required: true %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end -%>
+
+            <div class="actions">
+              <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block" %>
+            </div>
+          <% end %>
+      </div>
+      <div class="modal-footer">
+       <marquee direction="right"><%= image_tag ("chatcour.gif")%> </marquee>
+      </div>
+    </div>
+  </div>
+</div>
